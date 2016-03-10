@@ -1,0 +1,32 @@
+{
+  "name": "geneartor-vulgar",
+  "version": "0.0.0",
+  "description": "A Yeoman generator for creating a ready-to-develop configuration of the ng2-mean-webpack MEAN stack flavor",
+  "dependencies": {
+    "yeoman-generator": "^0.21.1",
+    "chalk": "^1.0.0",
+    "yosay": "^1.0.2"
+  },
+  "devDependencies": {
+    "yeoman-assert": "^2.0.0"
+  },
+  "keywords": [
+    "yeoman-generator",
+    "node",
+    "angular",
+    "mongo",
+    "express",
+    "webpack",
+    "mongoose",
+    "passportjs",
+    "socket.io",
+    "karma",
+    "protractor",
+    "jasmine",
+    "istanbul",
+    "typescript",
+    ":partyparrot:"
+  ],
+  "author": "datatypevoid <david.r.niciforovic@gmail.com>",
+  "license": "MIT"
+}
