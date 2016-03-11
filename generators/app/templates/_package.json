@@ -123,13 +123,8 @@
     "webpack-dev-server": "^1.14.1",
     "webpack-md5-hash": "^0.0.5"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/datatypevoid/ng2-mean-webpack.git"
-  },
-  "bugs": {
-    "url": "https://github.com/datatypevoid/ng2-mean-webpack/issues"
-  },
+  "repository": { },
+  "bugs": { },
   "engines": {
     "node": ">= 4.2.1 <= 5",
     "npm": ">= 3"
