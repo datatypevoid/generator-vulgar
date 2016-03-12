@@ -1,6 +1,6 @@
 {
   "name": "generator-vulgar",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A Yeoman generator for creating a ready-to-develop configuration of the ng2-mean-webpack MEAN stack flavor",
   "dependencies": {
     "yeoman-generator": "^0.21.1",
