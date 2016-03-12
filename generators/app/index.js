@@ -47,6 +47,11 @@ module.exports = yeoman.generators.Base.extend({
       );
 
       this.fs.copy(
+        this.templatePath('gitattributes'),
+        this.destinationPath('.gitattributes')
+      );
+
+      this.fs.copy(
         this.templatePath('babelrc'),
         this.destinationPath('.babelrc')
       );
