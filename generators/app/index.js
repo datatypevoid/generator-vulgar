@@ -529,6 +529,12 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('_src/_polyfills.ts'),
         this.destinationPath('src/polyfills.ts')
       );
+
+      //# Vendor
+      this.fs.copy(
+        this.templatePath('_src/_vendor.ts'),
+        this.destinationPath('src/vendor.ts')
+      );
     }
   },
   //** Install dependencies
