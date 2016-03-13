@@ -14,14 +14,15 @@
  * Angular 2 decorators and services
  */
 import {Component} from 'angular2/core';
-import {RouteConfig, Router, ROUTER_DIRECTIVES} from 'angular2/router';
-import {FORM_PROVIDERS} from 'angular2/common';
+import {RouteConfig, Router} from 'angular2/router';
 
-import {RouterActive} from './directives/router-active';
 import {Home} from './home/home';
 
 // Import NgFor directive
 import {NgFor} from 'angular2/common';
+
+// Import of Todo component
+import {Todo} from './components/todo/todo.component';
 
 
 /*
@@ -30,9 +31,8 @@ import {NgFor} from 'angular2/common';
  */
 @Component({
   selector: 'app',
-  providers: [ ...FORM_PROVIDERS ],
-  directives: [ ...ROUTER_DIRECTIVES,
-                RouterActive,
+  providers: [  ],
+  directives: [ Todo,
                 NgFor],
   pipes: [],
   // Load our main `Sass` file into our `app` `component`
@@ -47,6 +47,9 @@ import {NgFor} from 'angular2/common';
           </li>
           <li router-active>
             <a [routerLink]=" ['Home'] ">Home</a>
+          </li>
+          <li router-active>
+            <a [routerLink]=" ['Todo'] ">Todo</a>
           </li>
           <li router-active>
             <a [routerLink]=" ['About'] ">About</a>
@@ -68,14 +71,12 @@ import {NgFor} from 'angular2/common';
   `
 })
 @RouteConfig([
-  { path: '/', component: Home, name: 'Index' },
-  { path: '/home', component: Home, name: 'Home' },
+  { path: '/', name: 'Index', component: Home, useAsDefault: true },
+  { path: '/home',  name: 'Home',  component: Home },
+  { path: '/todo', component: Todo, name: 'Todo' },
   // Async load a component using Webpack's require with
   // es6-promise-loader and webpack `require`
-  { path: '/about',
-    loader:
-      () => require('es6-promise!./about/about')('About'), name: 'About' },
-  { path: '/**', redirectTo: ['Index'] }
+  { path: '/about', name: 'About', loader: () => require('es6-promise!./about/about')('About') },
 ])
 export class App {
   angularLogo = 'assets/img/angular-logo.png';
