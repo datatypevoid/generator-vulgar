@@ -32,6 +32,7 @@ module.exports = {
   // our angular app
   entry: {
     'polyfills': './src/polyfills.ts',
+    'vendor': './src/vendor.ts',
     'main': './src/main.ts'
   },
 
@@ -75,7 +76,8 @@ module.exports = {
       // `require("!style!css!sass!./file.scss");`
       {
         test: /\.scss$/,
-        loader: 'style!css!autoprefixer-loader?browsers=last 2 versions!sass'
+        loader: 'style!css!autoprefixer-loader?browsers=last 2 versions!sass',
+        exclude: [ helpers.root('node_modules') ]
       }
 
       // if you add a loader include the resolve file extension above
@@ -90,7 +92,7 @@ module.exports = {
     new webpack.NoErrorsPlugin(),
 
     new webpack.optimize.OccurenceOrderPlugin(true),
-    new webpack.optimize.CommonsChunkPlugin({ name: 'polyfills', filename: 'polyfills.bundle.js', minChunks: Infinity }),
+    new webpack.optimize.CommonsChunkPlugin({ name: ['vendor', 'polyfills'], filename: '[name].bundle.js', minChunks: Infinity }),
     // static assets
     new CopyWebpackPlugin([ { from: 'src/assets', to: 'assets' } ]),
     // generating html
