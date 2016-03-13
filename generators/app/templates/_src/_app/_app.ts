@@ -18,13 +18,6 @@ import {RouteConfig, Router} from 'angular2/router';
 
 import {Home} from './home/home';
 
-// Import NgFor directive
-import {NgFor} from 'angular2/common';
-
-// Import of Todo component
-import {Todo} from './components/todo/todo.component';
-
-
 /*
  * App Component
  * Top Level Component
@@ -32,8 +25,7 @@ import {Todo} from './components/todo/todo.component';
 @Component({
   selector: 'app',
   providers: [  ],
-  directives: [ Todo,
-                NgFor],
+  directives: [ ],
   pipes: [],
   // Load our main `Sass` file into our `app` `component`
   styleUrls: [require("!style!css!sass!../sass/main.scss")],
@@ -47,9 +39,6 @@ import {Todo} from './components/todo/todo.component';
           </li>
           <li router-active>
             <a [routerLink]=" ['Home'] ">Home</a>
-          </li>
-          <li router-active>
-            <a [routerLink]=" ['Todo'] ">Todo</a>
           </li>
           <li router-active>
             <a [routerLink]=" ['About'] ">About</a>
@@ -73,7 +62,6 @@ import {Todo} from './components/todo/todo.component';
 @RouteConfig([
   { path: '/', name: 'Index', component: Home, useAsDefault: true },
   { path: '/home',  name: 'Home',  component: Home },
-  { path: '/todo', component: Todo, name: 'Todo' },
   // Async load a component using Webpack's require with
   // es6-promise-loader and webpack `require`
   { path: '/about', name: 'About', loader: () => require('es6-promise!./about/about')('About') },
