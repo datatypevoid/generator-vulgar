@@ -1,7 +1,7 @@
 {
   "name": "generator-vulgar",
   "version": "0.1.0",
-  "description": "A Yeoman generator for creating a ready-to-develop configuration of the ng2-mean-webpack MEAN stack flavor",
+  "description": "A MEAN stack development kit featuring Angular 2 (Router, Http, Forms, Services, Tests, E2E, Coverage), Express, MongoDB, Mongoose, Node, PassportJS, Socket.io, Karma, Protractor, Jasmine, Istanbul, TypeScript, and Webpack",
   "dependencies": {
     "yeoman-generator": "^0.21.1",
     "chalk": "^1.0.0",
