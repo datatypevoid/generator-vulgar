@@ -10,3 +10,5 @@ only:
   - master
   - development
 script: npm test
+notifications:
+  slack: vulgardisplayofpower:wJ5sUavcVl4FNg98KI3OHg2G
