@@ -8,7 +8,8 @@
     "yosay": "^1.0.2"
   },
   "devDependencies": {
-    "yeoman-assert": "^2.0.0"
+    "yeoman-assert": "^2.0.0",
+    "yo": "^1.7.0"
   },
   "keywords": [
     "yeoman-generator",
