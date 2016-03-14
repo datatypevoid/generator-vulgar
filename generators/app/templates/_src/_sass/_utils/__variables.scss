@@ -1,60 +1,72 @@
-// # Responsive Breakpoints
-$breakpoints : (
-  'retina' : (min-width : 320px),
-  'xsmall' : (min-width : 480px),
-  'small' : (min-width : 768px),
-  'medium' : (min-width : 992px),
-  'large' : (min-width : 1200px)
-);
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
 
-// # Colors
 
-// ## Brand Color Variables
 
-// define the base (default) color key
-$brand-color-key: 'base'!default;
 
-// keep color variables organized in a Sass `map`
-// give each color a semantic name describing its role
-$brand-colors: (
-  'primary' : (
-    'base' : #ff9800,
-    'light' : #FFE0B2,
-    'dark' : #f57c00
-  ),
 
-  'accent' : (
-    'base' : #ff5252
-  ),
+/// Regular font family
+/// @type List
+$text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
 
-  'text' : (
-    'base' : #ffe0b2,
-    'dark' : #727272,
-    'darker' : #212121
-  )
-);
+/// Code (monospace) font family
+/// @type List
+$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
 
-// aggregate different semantic levels of opacity used in a
-// project's design with Sass maps
-$brand-opacity: (
 
-  'light': 0.8, // opacity used with lighter colors
-  'dark': 0.4   // opacity used with darker colors
-                // ... et cetera
-);
 
-// set tint/shade interval for use with the opacity level utility
-// function
-$color-interval: 10% !global;
 
-// # Buttons
 
-// ## Button Variables
-// for relating component specific-values to others and preventing
-// magic numbers
-$button-padding: 0.5rem 1rem;
-$button-font-size: type-scale(-1);                // utility function
-$button-bgcolor: brand-color('primary');
-$button-border-width: 1rem;
-$button-color-hover: brand-color('primary', 'light');
-$button-height: line-height(1);
+/// Copy text color
+/// @type Color
+$text-color: rgb(34, 34, 34) !default;
+
+/// Main brand color
+/// @type Color
+$brand-color: rgb(229, 0, 80) !default;
+
+/// Light grey
+/// @type Color
+$light-grey: rgb(237, 237, 237) !default;
+
+/// Medium grey
+/// @type Color
+$mid-grey: rgb(153, 153, 153) !default;
+
+/// Dark grey
+/// @type Color
+$dark-grey: rgb(68, 68, 68) !default;
+
+
+
+
+
+/// Container's maximum width
+/// @type Length
+$max-width: 1180px !default;
+
+
+
+
+
+/// Breakpoints map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+/// @see {mixin} respond-to
+$breakpoints: (
+  'small': (min-width: 320px),
+  'medium': (min-width: 768px),
+  'large': (min-width: 1024px),
+) !default;
+
+
+
+
+
+
+/// Relative or absolute URL where all assets are served from
+/// @type String
+/// @example scss - When using a CDN
+///   $base-url: 'http://cdn.example.com/assets/';
+$base-url: '/assets/' !default;

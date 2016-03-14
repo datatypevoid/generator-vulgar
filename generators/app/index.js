@@ -349,13 +349,13 @@ module.exports = yeoman.generators.Base.extend({
 
       //** Base
       this.fs.copy(
-        this.templatePath('_src/_sass/_base/__animations.scss'),
-        this.destinationPath('src/sass/base/_animations.scss')
+        this.templatePath('_src/_sass/_base/__fonts.scss'),
+        this.destinationPath('src/sass/base/_fonts.scss')
       );
 
       this.fs.copy(
-        this.templatePath('_src/_sass/_base/__module.scss'),
-        this.destinationPath('src/sass/base/_module.scss')
+        this.templatePath('_src/_sass/_base/__helpers.scss'),
+        this.destinationPath('src/sass/base/_helpers.scss')
       );
 
       this.fs.copy(
@@ -375,11 +375,6 @@ module.exports = yeoman.generators.Base.extend({
       );
 
       this.fs.copy(
-        this.templatePath('_src/_sass/_components/__module.scss'),
-        this.destinationPath('src/sass/components/_module.scss')
-      );
-
-      this.fs.copy(
         this.templatePath('_src/_sass/_components/_README.md'),
         this.destinationPath('src/sass/components/README.md')
       );
@@ -388,16 +383,6 @@ module.exports = yeoman.generators.Base.extend({
       this.fs.copy(
         this.templatePath('_src/_sass/_layout/__footer.scss'),
         this.destinationPath('src/sass/layout/_footer.scss')
-      );
-
-      this.fs.copy(
-        this.templatePath('_src/_sass/_layout/__forms.scss'),
-        this.destinationPath('src/sass/layout/_forms.scss')
-      );
-
-      this.fs.copy(
-        this.templatePath('_src/_sass/_layout/__grid.scss'),
-        this.destinationPath('src/sass/layout/_grid.scss')
       );
 
       this.fs.copy(
@@ -411,21 +396,11 @@ module.exports = yeoman.generators.Base.extend({
       );
 
       this.fs.copy(
-        this.templatePath('_src/_sass/_layout/__sidebar.scss'),
-        this.destinationPath('src/sass/layout/_sidebar.scss')
-      );
-
-      this.fs.copy(
         this.templatePath('_src/_sass/_layout/_README.md'),
         this.destinationPath('src/sass/layout/README.md')
       );
 
       //** Pages
-      this.fs.copy(
-        this.templatePath('_src/_sass/_pages/__contact.scss'),
-        this.destinationPath('src/sass/pages/_contact.scss')
-      );
-
       this.fs.copy(
         this.templatePath('_src/_sass/_pages/__home.scss'),
         this.destinationPath('src/sass/pages/_module.scss')
@@ -438,8 +413,8 @@ module.exports = yeoman.generators.Base.extend({
 
       //** Themes
       this.fs.copy(
-        this.templatePath('_src/_sass/_themes/__module.scss'),
-        this.destinationPath('src/sass/themes/_module.scss')
+        this.templatePath('_src/_sass/_themes/__default.scss'),
+        this.destinationPath('src/sass/themes/_default.scss')
       );
 
       this.fs.copy(
@@ -459,11 +434,6 @@ module.exports = yeoman.generators.Base.extend({
       );
 
       this.fs.copy(
-        this.templatePath('_src/_sass/_utils/__module.scss'),
-        this.destinationPath('src/sass/utils/_module.scss')
-      );
-
-      this.fs.copy(
         this.templatePath('_src/_sass/_utils/__placeholders.scss'),
         this.destinationPath('src/sass/utils/_placeholders.scss')
       );
@@ -478,20 +448,15 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('src/sass/utils/README.md')
       );
 
-      //** Vendors
+      //** Vendor
       this.fs.copy(
-        this.templatePath('_src/_sass/_vendors/__module.scss'),
-        this.destinationPath('src/sass/vendors/_module.scss')
+        this.templatePath('_src/_sass/_vendor/__normalize.scss'),
+        this.destinationPath('src/sass/vendor/_normalize.scss')
       );
 
       this.fs.copy(
-        this.templatePath('_src/_sass/_vendors/_README.md'),
-        this.destinationPath('src/sass/vendors/README.md')
-      );
-
-      this.fs.copy(
-        this.templatePath('_src/_sass/_vendors/_vendors-extensions/_README.md'),
-        this.destinationPath('src/sass/vendors/vendors-extensions/README.md')
+        this.templatePath('_src/_sass/_vendor/_README.md'),
+        this.destinationPath('src/sass/vendor/README.md')
       );
 
       //** Shame File

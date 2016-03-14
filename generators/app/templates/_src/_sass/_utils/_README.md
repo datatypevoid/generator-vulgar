@@ -1,10 +1,7 @@
-## Usage
+# Abstracts
 
-The `utils/` folder collects any Sass tools or helpers used project-wide.
-Global variables, functions, mixins, and placeholders should all reside
-in this directory.
+The `abstracts/` folder gathers all Sass tools and helpers used across the project. Every global variable, function, mixin and placeholder should be put in here.
 
-A good rule of thumb is that this folder should not output a single
-line of CSS when compiled individually.
+The rule of thumb for this folder is that it should not output a single line of CSS when compiled on its own. These are nothing but Sass helpers.
 
-Reference: http://sass-guidelin.es/#the-7-1-pattern
+Reference: [Sass Guidelines](http://sass-guidelin.es/) > [Architecture](http://sass-guidelin.es/#architecture) > [Abstracts folder](http://sass-guidelin.es/#abstracts-folder)
