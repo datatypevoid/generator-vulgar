@@ -16,6 +16,10 @@
     "mocha": "*",
     "yo": "^1.7.0"
   },
+  "files": [
+    "generators/app",
+    "generators/config"
+  ],
   "keywords": [
     "yeoman-generator",
     "node",
