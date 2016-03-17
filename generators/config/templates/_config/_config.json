@@ -1,0 +1,16 @@
+{
+  "ENV" : "development",
+
+  "PORT" : 3000,
+
+  "MONGO_URI" : {
+
+    "DEVELOPMENT" : "mongodb://localhost:27017/vulgar-dev",
+
+    "PRODUCTION" : "",
+
+    "TEST" : ""
+  },
+
+  "SESSION_SECRET" : "355FC4FE9348639B4E4FED1B8E93C"
+}
