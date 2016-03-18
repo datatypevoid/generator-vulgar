@@ -9,6 +9,59 @@
 
 ## Currently in development and meant for use with vulgar-cli
 
+### Generating a Routable Component on the Front-end
+
+You can generate a new route by with the following command (note the singular used in `hedgehog`):
+
+```bash
+yo vulgar:ng-route hedgehog
+```
+
+This will create a folder with a routable component (`hedgehog-root.component.ts`) with two sub-routes. The file structure will be as follows:
+
+```
+...
+|-- app
+|   |-- hedgehog
+|   |   |-- hedgehog-detail.component.html
+|   |   |-- hedgehog-detail.component.sass
+|   |   |-- hedgehog-detail.component.spec.ts
+|   |   |-- hedgehog-detail.component.ts
+|   |   |-- hedgehog-list.component.html
+|   |   |-- hedgehog-list.component.sass
+|   |   |-- hedgehog-list.component.spec.ts
+|   |   |-- hedgehog-list.component.ts
+|   |   |-- hedgehog-root.component.spec.ts
+|   |   |-- hedgehog-root.component.ts
+|   |   |-- hedgehog.service.spec.ts
+|   |   |-- hedgehog.service.ts
+|   |-- ...
+|-- app.ts
+...
+```
+
+Afterwards to use the new route open your main app component, import `hedgehog-root.component.ts` and add it in the route config:
+
+```
+@RouteConfig([
+  {path:'/hedgehog/...', name: 'HedgehogRoot', component: HedgehogRoot}
+])
+```
+
+#### Supported Options
+
+```bash
+# set the name for your routable component, bypassing the prompt
+$ yo vulgar:ng-route --name anteater
+```
+
+```bash
+# set the path for your routable component, bypassing the prompt
+$ yo vulgar:ng-route --path anteaters
+```
+
+Visiting `http://localhost:8080/hero` will show the `hedgehog` list.
+
 # Support, Questions, or Feedback
 
 > Contact us anytime for anything about this repo, Angular 2, or MEAN stack development in general.
