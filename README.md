@@ -7,6 +7,8 @@
 
 # generator-vulgar [![Join Slack](https://img.shields.io/badge/slack-join-brightgreen.svg)](http://www.davidniciforovic.com/wp-login.php?action=slack-invitation)
 
+## _This project is no longer maintained. The code has been merged with [vulgar-cli](https://github.com/datatypevoid/vulgar-cli), a tool for generating and managing cutting-edge MEAN stack applications_
+
 ## Currently in development and meant for use with vulgar-cli
 
 ### Generating a Routable Component on the Front-end
