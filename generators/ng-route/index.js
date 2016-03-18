@@ -30,13 +30,6 @@ module.exports = yeoman.generators.Base.extend({
 
     var done = this.async();
 
-    var prompts = [{
-        type: 'input',
-        name: 'name',
-        message: 'What would you like to name this component?',
-        default: ''
-    }];
-
     // Use custom prompt function which skips the prompt if
     // an option has been passed in
     this._prompt([{
@@ -200,10 +193,10 @@ module.exports = yeoman.generators.Base.extend({
 
   end: function() {
 
-    if(!this.vulgarcli) {
+    if(!this.options.vulgarcli) {
       // Terminate process if run from console
       process.exit(0);
-    } else if(this.vulgarcli === true) {
+    } else if(this.options.vulgarcli === true) {
       // `return 0` to let `vulgar-cli` know everything went okay on our end
       return 0;
     }
