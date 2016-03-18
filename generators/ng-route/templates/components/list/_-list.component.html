@@ -1,0 +1,12 @@
+<h2><%= classifiedName %> List</h2>
+
+<ul>
+  <li *ngFor="#<%= camelizedName %> of <%= camelizedName %>s">
+    <a
+      [routerLink]="['<%= classifiedName %>Detail', { id: <%= camelizedName %>.id }]">
+      <strong>{{ <%= camelizedName %>.id }}</strong>
+      -
+      {{ <%= camelizedName %>.name }}
+    </a>
+  </li>
+</ul>
