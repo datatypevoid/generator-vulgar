@@ -60,7 +60,7 @@ $ yo vulgar:ng-route --name anteater
 $ yo vulgar:ng-route --path anteaters
 ```
 
-Visiting `http://localhost:8080/hero` will show the `hedgehog` list.
+Visiting `http://localhost:8080/hedgehog` will show the `hedgehog` list.
 
 # Support, Questions, or Feedback
 
