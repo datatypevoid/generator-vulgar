@@ -4,68 +4,60 @@ var yeoman = require('yeoman-generator'),
      yosay = require('yosay'),
          _ = require('lodash'),
          s = require('underscore.string'),
-        fs = require('fs');
+        fs = require('fs'),
+    prompt = require('../../lib/option-or-prompt.js');
 
 module.exports = yeoman.generators.Base.extend({
+
+  _prompt: prompt,
+
+  // The name `constructor` is important here
+  constructor: function () {
+    // Calling the super constructor is important so our generator is correctly set up
+    yeoman.generators.Base.apply(this, arguments);
+
+    // This method adds support for a `--vulgarcli` flag
+    this.option('vulgarcli', { type: Boolean, defaults: false, hide: true });
+
+    // This method adds support for a `--route-name` flag
+    this.option('name', { type: String, alias:'n'});
+
+    // This method adds support for a `--route-path` flag
+    this.option('path', { type: String, alias:'p'});
+  },
+
   askForModuleName: function () {
 
     var done = this.async();
 
-    var modulesFolder = process.cwd() + '/src/modules/';
-
-    // Have Yeoman greet the user.
-    this.log(yosay(
-      'Welcome to the sensational ' + chalk.red('generator-vulgar') + ' generator!'
-    ));
-
     var prompts = [{
-        type: 'list',
-        name: 'moduleName',
-        message: 'Which module will this route belong to?',
-        default: 'core',
-        choices: []
-      },
-      {
         type: 'input',
-        name: 'routeName',
-        message: 'What is the name of the route (leave it blank to inherit from module)?',
+        name: 'name',
+        message: 'What would you like to name this component?',
         default: ''
     }];
 
-    //** Populate module choices for user to see
-    if (fs.existsSync(modulesFolder)) {
-
-      fs.readdirSync(modulesFolder).forEach(function (folder) {
-
-        var stat = fs.statSync(modulesFolder + '/' + folder);
-
-        if(stat.isDirectory()) {
-
-          prompts[0].choices.push({
-            value: folder,
-            name: folder
-          });
-        }
-      });
-    }
-
-    this.prompt(prompts, function (props) {
+    // Use custom prompt function which skips the prompt if
+    // an option has been passed in
+    this._prompt([{
+      type: 'input',
+      name: 'name',
+      message: 'What would you like to name this component?',
+      default: ''
+    }], function(props) {
       this.props = props;
       // To access props later use this.props.someOption;
 
-      this.moduleName = this.props.moduleName;
-      this.routeName = this.props.routeName ||
-                  this.props.moduleName;
+      this.moduleName = this.props.name;
+      this.name = this.props.name;
 
-      this.slugifiedModuleName = s(this.moduleName).slugify().value();
-      this.humanizedModuleName = s(this.moduleName).humanize().value();
-      this.decapitalizedModuleName = s(this.moduleName).humanize().decapitalize().value();
-
-      this.slugifiedName = s(this.routeName).humanize().slugify().value();
+      this.slugifiedName = s(this.name).humanize().slugify().value();
       this.classifiedName = s(this.slugifiedName).classify().value();
       this.humanizedName = s(this.slugifiedName).humanize().value();
       this.camelizedName = s(this.slugifiedName).camelize().value();
-      this.decapitalizedName = s(this.routeName).humanize().decapitalize().value();
+      this.decapitalizedName = s(this.name).humanize().decapitalize().value();
+
+      this.destination = 'src/app/' + this.decapitalizedName + '/';
 
       done();
     }.bind(this));
@@ -75,69 +67,32 @@ module.exports = yeoman.generators.Base.extend({
 
     var done = this.async();
 
-    // Have Yeoman greet the user.
-    this.log(yosay(
-      'Welcome to the sensational ' + chalk.red('generator-vulgar') + ' generator!'
-    ));
+    this._prompt([{
+      type: 'input',
+      name: 'path',
+      message: 'What would you like the route path to be?',
+      default: this.slugifiedName
+    }], function(props) {
 
-    var prompts = [{
-        type: 'input',
-        name: 'routePath',
-        message: 'What would you like the route path to be?',
-        default: this.slugifiedName
-      }];
+        this.props = props;
+        // To access props later use this.props.someOption;
 
-    this.prompt(prompts, function (props) {
-      this.props = props;
-      // To access props later use this.props.someOption;
+        this.path = this.props.path;
 
-      this.routePath = this.props.routePath;
-
-      this.slugifiedRoutePath = s(this.routePath).slugify().value();
-
-      done();
+        this.slugifiedRoutePath = s(this.path).slugify().value();
+        done();
     }.bind(this));
   },
 
   writing: function () {
 
-    //** Generate main `Angular` `route` component
-    this.fs.copyTpl(
-      this.templatePath('_main.ts'),
-      this.destinationPath('src/' + this.moduleName + '/' + this.slugifiedName + '.ts'), {
-
-        classifiedName: this.classifiedName,
-        humanizedName: this.humanizedName,
-        slugifiedName: this.slugifiedName
-      }
-    );
-
-    //** Generate main `Angular` `route` template
-    this.fs.copyTpl(
-      this.templatePath('_main.html'),
-      this.destinationPath('src/' + this.moduleName + '/' + this.slugifiedName + '.html'), {
-
-        slugifiedName: this.slugifiedName
-      }
-    );
-
-    //** Generate main `Angular` `route` component unit test
-    this.fs.copyTpl(
-      this.templatePath('_main.spec.ts'),
-      this.destinationPath('src/' + this.moduleName + '/' + this.slugifiedName + '.spec.ts'), {
-
-        classifiedName: this.classifiedName,
-        slugifiedName: this.slugifiedName
-      }
-    );
-
     //** Generate `root` component
     this.fs.copyTpl(
       this.templatePath('components/_-root.component.ts'),
-      this.destinationPath('src/' + this.moduleName + '/' + this.decapitalizedName + '/' + this.slugifiedName + '-root.component.ts'), {
+      this.destinationPath(this.destination + this.slugifiedName + '-root.component.ts'), {
 
         classifiedName: this.classifiedName,
-        routePath: this.routePath,
+        routePath: this.path,
         humanizedName: this.humanizedName,
         slugifiedName: this.slugifiedName
       }
@@ -146,7 +101,7 @@ module.exports = yeoman.generators.Base.extend({
     //** Generate `list` component
     this.fs.copyTpl(
       this.templatePath('components/list/_-list.component.ts'),
-      this.destinationPath('src/' + this.moduleName + '/' + this.decapitalizedName + '/' + this.slugifiedName + '-list.component.ts'), {
+      this.destinationPath(this.destination + this.slugifiedName + '-list.component.ts'), {
 
         classifiedName: this.classifiedName,
         humanizedName: this.humanizedName,
@@ -158,7 +113,7 @@ module.exports = yeoman.generators.Base.extend({
     //** Generate `list` unit test
     this.fs.copyTpl(
       this.templatePath('components/list/_-list.component.spec.ts'),
-      this.destinationPath('src/' + this.moduleName + '/' + this.decapitalizedName + '/' + this.slugifiedName + '-list.component.spec.ts'), {
+      this.destinationPath(this.destination + this.slugifiedName + '-list.component.spec.ts'), {
 
         classifiedName: this.classifiedName,
         humanizedName: this.humanizedName,
@@ -169,7 +124,7 @@ module.exports = yeoman.generators.Base.extend({
     //** Generate `list` template
     this.fs.copyTpl(
       this.templatePath('components/list/_-list.component.html'),
-      this.destinationPath('src/' + this.moduleName + '/' + this.decapitalizedName + '/' + this.slugifiedName + '-list.component.html'), {
+      this.destinationPath(this.destination + this.slugifiedName + '-list.component.html'), {
 
         classifiedName: this.classifiedName,
         camelizedName: this.camelizedName
@@ -179,13 +134,13 @@ module.exports = yeoman.generators.Base.extend({
     //** Generate `list` styles
     this.fs.copy(
       this.templatePath('components/list/_-list.component.scss'),
-      this.destinationPath('src/' + this.moduleName + '/' + this.decapitalizedName + '/' + this.slugifiedName + '-list.component.scss')
+      this.destinationPath(this.destination + this.slugifiedName + '-list.component.scss')
     );
 
     //** Generate `detail` component
     this.fs.copyTpl(
       this.templatePath('components/detail/_-detail.component.ts'),
-      this.destinationPath('src/' + this.moduleName + '/' + this.decapitalizedName + '/' + this.slugifiedName + '-detail.component.ts'), {
+      this.destinationPath(this.destination + this.slugifiedName + '-detail.component.ts'), {
 
         classifiedName: this.classifiedName,
         humanizedName: this.humanizedName,
@@ -197,7 +152,7 @@ module.exports = yeoman.generators.Base.extend({
     //** Generate `detail` unit test
     this.fs.copyTpl(
       this.templatePath('components/detail/_-detail.component.spec.ts'),
-      this.destinationPath('src/' + this.moduleName + '/' + this.decapitalizedName + '/' + this.slugifiedName + '-detail.component.spec.ts'), {
+      this.destinationPath(this.destination + this.slugifiedName + '-detail.component.spec.ts'), {
 
         classifiedName: this.classifiedName,
         humanizedName: this.humanizedName,
@@ -208,7 +163,7 @@ module.exports = yeoman.generators.Base.extend({
     //** Generate `detail` template
     this.fs.copyTpl(
       this.templatePath('components/detail/_-detail.component.html'),
-      this.destinationPath('src/' + this.moduleName + '/' + this.decapitalizedName + '/' + this.slugifiedName + '-detail.component.html'), {
+      this.destinationPath(this.destination + this.slugifiedName + '-detail.component.html'), {
 
         classifiedName: this.classifiedName,
         camelizedName: this.camelizedName
@@ -218,13 +173,13 @@ module.exports = yeoman.generators.Base.extend({
     //** Generate `detail` styles
     this.fs.copy(
       this.templatePath('components/detail/_-detail.component.scss'),
-      this.destinationPath('src/' + this.moduleName + '/' + this.decapitalizedName + '/' + this.slugifiedName + '-detail.component.scss')
+      this.destinationPath(this.destination + this.slugifiedName + '-detail.component.scss')
     );
 
     //** Generate `Angular` service
     this.fs.copyTpl(
       this.templatePath('services/_.service.ts'),
-      this.destinationPath('src/' + this.moduleName + '/' + this.decapitalizedName + '/' + this.slugifiedName + '.service.ts'), {
+      this.destinationPath(this.destination + this.slugifiedName + '.service.ts'), {
 
         classifiedName: this.classifiedName
       }
@@ -233,7 +188,7 @@ module.exports = yeoman.generators.Base.extend({
     //** Generate `Angular` service unit test
     this.fs.copyTpl(
       this.templatePath('services/_.service.spec.ts'),
-      this.destinationPath('src/' + this.moduleName + '/' + this.decapitalizedName + '/' + this.slugifiedName + '.service.spec.ts'), {
+      this.destinationPath(this.destination + this.slugifiedName + '.service.spec.ts'), {
 
         classifiedName: this.classifiedName,
         slugifiedName: this.slugifiedName,
@@ -243,7 +198,14 @@ module.exports = yeoman.generators.Base.extend({
     );
   },
 
-  install: function () {
-    this.installDependencies();
+  end: function() {
+
+    if(!this.vulgarcli) {
+      // Terminate process if run from console
+      process.exit(0);
+    } else if(this.vulgarcli === true) {
+      // `return 0` to let `vulgar-cli` know everything went okay on our end
+      return 0;
+    }
   }
 });

@@ -30,6 +30,6 @@ export class <%= classifiedName %>ListComponent implements OnInit {
   ngOnInit() {
     this._service
           .getAll()
-            .then(<%= camelizedName %>s => this.<%= camelizedName %>s = <%= camelizedName %>);
+            .then(<%= camelizedName %>s => this.<%= camelizedName %>s = <%= camelizedName %>s);
   }
 }

@@ -8,14 +8,14 @@ import {
   beforeEachProviders
 } from 'angular2/testing';
 import {provide} from 'angular2/core';
-import {{<%= classifiedName %>ListComponent} from './{<%= slugifiedName %>-list.component';
-import {{<%= classifiedName %>, {<%= classifiedName %>Service} from './{<%= slugifiedName %>.service';
+import {<%= classifiedName %>ListComponent} from './{<%= slugifiedName %>-list.component';
+import {<%= classifiedName %>, {<%= classifiedName %>Service} from './{<%= slugifiedName %>.service';
 
 class Mock{<%= classifiedName %>Service {
   getAll() { return Promise.resolve([new {<%= classifiedName %>(1, 'one')]); }
 }
 
-describe('{<%= classifiedName %>ListComponent', () => {
+describe('<%= classifiedName %>ListComponent', () => {
 
   beforeEachProviders(() => [
     provide({<%= classifiedName %>Service, {useClass: Mock{<%= classifiedName %>Service}),
