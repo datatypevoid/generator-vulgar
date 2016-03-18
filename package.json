@@ -20,6 +20,7 @@
   "files": [
     "generators"
   ],
+  "preferGlobal": true,
   "keywords": [
     "yeoman-generator",
     "node",
