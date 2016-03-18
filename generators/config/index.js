@@ -41,8 +41,6 @@ module.exports = yeoman.generators.Base.extend({
 
   end: function() {
 
-    console.log(this.destination);
-
     if(!this.vulgarcli) {
       // Terminate process if run from console
       process.exit(0);
