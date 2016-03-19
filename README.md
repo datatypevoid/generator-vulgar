@@ -60,6 +60,18 @@ $ yo vulgar:ng-route --name anteater
 $ yo vulgar:ng-route --path anteaters
 ```
 
+```bash
+# set the module for your routable component, bypassing the prompt
+# note that this directory should already exist in `src/`
+$ yo vulgar:ng-route --module app
+```
+
+```bash
+# set the destination for your routable component, bypassing the prompt
+# this is from the `root` of your application
+$ yo vulgar:ng-route --dest src/app/todo
+```
+
 Visiting `http://localhost:8080/hedgehog` will show the `hedgehog` list.
 
 # Support, Questions, or Feedback
