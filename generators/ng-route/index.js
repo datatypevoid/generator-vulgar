@@ -32,19 +32,48 @@ module.exports = yeoman.Base.extend({
 
     var done = this.async();
 
-    // Use custom prompt function which skips the prompt if
-    // an option has been passed in
-    this._prompt([{
+    var modulesSource = 'src/';
+
+    var prompts = [{
+      type: 'list',
+      name: 'moduleName',
+      default: 'app',
+      message: 'Which module does this route belongs to?',
+      choices: []
+    },{
       type: 'input',
       name: 'name',
       message: 'What would you like to name this component?',
       default: ''
-    }], function(props) {
+    }];
+
+    // Add module choices
+    if (fs.existsSync(modulesSource)) {
+
+      fs.readdirSync(modulesSource).forEach(function (folder) {
+        var stat = fs.statSync(modulesSource + '/' + folder);
+
+        if (stat.isDirectory()
+              // Exclude the `assets` and `sass` directories
+              && folder !== 'assets'
+              && folder !== 'sass') {
+          console.log(folder);
+          prompts[0].choices.push({
+            value: folder,
+            name: folder
+          });
+        }
+      });
+    }
+
+    // Use custom prompt function which skips the prompt if
+    // an option has been passed in
+    this._prompt(prompts, function(props) {
       this.props = props;
       // To access props later use this.props.someOption;
 
-      this.moduleName = this.props.name;
-      this.name = this.props.name;
+      this.moduleName = this.props.moduleName;
+      this.name = this.props.name || 'routable';
 
       this.slugifiedName = s(this.name).humanize().slugify().value();
       this.classifiedName = s(this.slugifiedName).classify().value();
@@ -52,7 +81,7 @@ module.exports = yeoman.Base.extend({
       this.camelizedName = s(this.slugifiedName).camelize().value();
       this.decapitalizedName = s(this.name).humanize().decapitalize().value();
 
-      this.destination = 'src/app/' + this.decapitalizedName + '/';
+      this.destination = modulesSource + this.moduleName + '/' + this.decapitalizedName + '/';
 
       done();
     }.bind(this));
