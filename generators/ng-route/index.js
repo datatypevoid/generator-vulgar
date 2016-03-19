@@ -28,10 +28,10 @@ module.exports = yeoman.Base.extend({
     this.option('module', { type: String });
 
     // This method adds support for a `--route-name` flag
-    this.option('name', { type: String, alias:'n'});
+    this.option('name', { type: String });
 
     // This method adds support for a `--route-path` flag
-    this.option('path', { type: String, alias:'p'});
+    this.option('path', { type: String });
   },
 
   askForModuleName: function () {
