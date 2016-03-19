@@ -11,4 +11,4 @@ only:
   - development
 script: npm test
 notifications:
-  slack: vulgardisplayofpower:wJ5sUavcVl4FNg98KI3OHg2G
+  slack: vulgardisplayofpower:RQzt5qlhpuN4caO9OavVbmoi
