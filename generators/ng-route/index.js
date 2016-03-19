@@ -7,14 +7,16 @@ var yeoman = require('yeoman-generator'),
         fs = require('fs'),
     prompt = require('../../lib/option-or-prompt.js');
 
-module.exports = yeoman.generators.Base.extend({
+// TODO: Refactor to remove prompt logic since the cli handles it
+//       now that generation code has been merged with the cli
+module.exports = yeoman.Base.extend({
 
   _prompt: prompt,
 
   // The name `constructor` is important here
   constructor: function () {
     // Calling the super constructor is important so our generator is correctly set up
-    yeoman.generators.Base.apply(this, arguments);
+    yeoman.Base.apply(this, arguments);
 
     // This method adds support for a `--vulgarcli` flag
     this.option('vulgarcli', { type: Boolean, defaults: false, hide: true });
@@ -78,6 +80,12 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: function () {
+
+    // For dummy test
+    this.fs.copy(
+      this.templatePath('dummyfile.txt'),
+      this.destinationPath('dummyfile.txt')
+    );
 
     //** Generate `root` component
     this.fs.copyTpl(

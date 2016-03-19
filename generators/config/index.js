@@ -3,12 +3,12 @@ var yeoman = require('yeoman-generator'),
      chalk = require('chalk'),
          _ = require('lodash');
 
-module.exports = yeoman.generators.Base.extend({
+module.exports = yeoman.Base.extend({
 
   // The name `constructor` is important here
   constructor: function () {
     // Calling the super constructor is important so our generator is correctly set up
-    yeoman.generators.Base.apply(this, arguments);
+    yeoman.Base.apply(this, arguments);
 
     // This method adds support for a `--dest` flag
     this.option('dest', { type: String });
@@ -18,6 +18,12 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: function () {
+
+    // For dummy test
+    this.fs.copy(
+      this.templatePath('dummyfile.txt'),
+      this.destinationPath('dummyfile.txt')
+    );
 
    // Optional flag with a desination modifier for use with
    this.destination = this.options.dest;
