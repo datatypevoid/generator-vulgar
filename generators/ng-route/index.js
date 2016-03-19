@@ -22,15 +22,23 @@ module.exports = yeoman.Base.extend({
     this.option('vulgarcli', { type: Boolean, defaults: false, hide: true });
 
     // This method adds support for a `--dest` flag
+    // This allows a destination to be passed in at the command line
+    // Note that this path will be the final path FROM the root of the
+    // project where the cli should be run
     this.option('dest', { type: String });
 
     // This method adds support for a `--module` flag
+    // This allows the module name to be passed in from the command line
     this.option('module', { type: String });
 
-    // This method adds support for a `--route-name` flag
+    // This method adds support for a `--name` flag
+    // This allows the name of the routable Angular component(s) to be
+    // passed in at the command line
     this.option('name', { type: String });
 
-    // This method adds support for a `--route-path` flag
+    // This method adds support for a `--path` flag
+    // This allows a url to be passed in at which the children
+    // components of the routable Angular component can be reached
     this.option('path', { type: String });
   },
 
