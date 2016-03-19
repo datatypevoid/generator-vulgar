@@ -21,6 +21,12 @@ module.exports = yeoman.Base.extend({
     // This method adds support for a `--vulgarcli` flag
     this.option('vulgarcli', { type: Boolean, defaults: false, hide: true });
 
+    // This method adds support for a `--dest` flag
+    this.option('dest', { type: String });
+
+    // This method adds support for a `--module` flag
+    this.option('module', { type: String });
+
     // This method adds support for a `--route-name` flag
     this.option('name', { type: String, alias:'n'});
 
@@ -36,7 +42,7 @@ module.exports = yeoman.Base.extend({
 
     var prompts = [{
       type: 'list',
-      name: 'moduleName',
+      name: 'module',
       default: 'app',
       message: 'Which module does this route belongs to?',
       choices: []
@@ -57,7 +63,7 @@ module.exports = yeoman.Base.extend({
               // Exclude the `assets` and `sass` directories
               && folder !== 'assets'
               && folder !== 'sass') {
-          console.log(folder);
+
           prompts[0].choices.push({
             value: folder,
             name: folder
@@ -72,7 +78,7 @@ module.exports = yeoman.Base.extend({
       this.props = props;
       // To access props later use this.props.someOption;
 
-      this.moduleName = this.props.moduleName;
+      this.moduleName = this.props.module;
       this.name = this.props.name || 'routable';
 
       this.slugifiedName = s(this.name).humanize().slugify().value();
@@ -81,7 +87,13 @@ module.exports = yeoman.Base.extend({
       this.camelizedName = s(this.slugifiedName).camelize().value();
       this.decapitalizedName = s(this.name).humanize().decapitalize().value();
 
-      this.destination = modulesSource + this.moduleName + '/' + this.decapitalizedName + '/';
+      if (this.options.dest) {
+
+        this.destination = this.options.dest;
+      } else {
+
+        this.destination = modulesSource + this.moduleName + '/' + this.decapitalizedName + '/';
+      }
 
       done();
     }.bind(this));
