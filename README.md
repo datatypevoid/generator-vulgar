@@ -9,8 +9,6 @@
 
 ## _This project is being actively developed for use alongside  [vulgar-cli](https://github.com/datatypevoid/vulgar-cli), a tool for generating and managing cutting-edge MEAN stack applications_
 
-## Currently in development and meant for use with vulgar-cli
-
 ### Generating a Routable Component on the Front-end
 
 You can generate a new route by with the following command (note the singular used in `hedgehog`):
