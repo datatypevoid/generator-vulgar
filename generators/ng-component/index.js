@@ -107,7 +107,7 @@ module.exports = yeoman.generators.Base.extend({
       type: 'input',
       name: 'name',
       message: 'What would you like to name this component?',
-      default: ''
+      default: 'ng-component'
     }];
 
     // Use custom prompt function which skips the prompt if
@@ -129,7 +129,7 @@ module.exports = yeoman.generators.Base.extend({
         this.destination = this.options.dest;
       } else {
 
-        this.destination = modulesSource + '/' + this.decapitalizedName + '/';
+        this.destination = modulesSource + '/' + this.slugifiedName + '/';
       }
 
       done();
