@@ -22,6 +22,9 @@ $ yo vulgar:ng-directive
 
 # look at this cool new Angular 2 pipe
 $ yo vulgar:ng-pipe
+
+# and this awesome Angular 2 service
+$ yo vulgar:ng-service
 ```
 
 You can find all possible scaffolds in the table below:
@@ -31,6 +34,7 @@ Scaffold  | Usage
 Component | `$ yo vulgar:ng-component`
 Directive | `$ yo vulgar:ng-directive`
 Pipe      | `$ yo vulgar:ng-pipe`
+Service   | `$ yo vulgar:ng-service`
 
 ### Generating a Routable Component on the Front-end
 
@@ -82,7 +86,8 @@ $ yo vulgar:ng-route --name anteater
 # it works similarly for
 $ yo vulgar:ng-component --name rhino
 $ yo vulgar:ng-directive --name ostrich
-$ yo vulgar:ng-directive --name zebra
+$ yo vulgar:ng-pipe --name zebra
+$ yo vulgar:ng-service --name giraffe
 ```
 
 ```bash
@@ -99,6 +104,7 @@ $ yo vulgar:ng-route --module app
 $ yo vulgar:ng-component --module app
 $ yo vulgar:ng-directive --module app
 $ yo vulgar:ng-pipe --module app
+$ yo vulgar:ng-service --module app
 ```
 
 ```bash
@@ -110,6 +116,7 @@ $ yo vulgar:ng-route --dest src/app/todo
 $ yo vulgar:ng-component --dest src/app/todo
 $ yo vulgar:ng-directive --dest src/app/todo
 $ yo vulgar:ng-pipe --dest src/app/todo
+$ yo vulgar:ng-service --dest src/app/shared
 ```
 
 ## Acknowledgements
