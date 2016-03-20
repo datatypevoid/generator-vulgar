@@ -11,25 +11,29 @@
 
 ### Angular 2 Scaffolds for the Front-End
 
-You can use `yo vulgar` to generate various Angular 2 components:
+You can use `$ yo vulgar` to generate various Angular 2 components:
 
 ```bash
 # generate a new Angular 2 component
 $ yo vulgar:ng-component
+
+# generate a new Angular 2 directive
+$ yo vulgar:ng-directive
 ```
 
 You can find all possible scaffolds in the table below:
 
 Scaffold  | Usage
---------- | ------------------------
+--------- | --------------------------
 Component | `yo vulgar:ng-component`
+Directive | `$ yo vulgar:ng-directive`
 
 ### Generating a Routable Component on the Front-end
 
 You can generate a new route by with the following command (note the singular used in `hedgehog`):
 
 ```bash
-yo vulgar:ng-route hedgehog
+$ yo vulgar:ng-route hedgehog
 ```
 
 This will create a folder with a routable component (`hedgehog-root.component.ts`) with two sub-routes. The file structure will be as follows:
@@ -63,11 +67,17 @@ Afterwards to use the new route open your main app component, import `hedgehog-r
 ])
 ```
 
+Visiting `http://localhost:8080/hedgehog` will show the `hedgehog` list.
+
 #### Supported Options
 
 ```bash
 # set the name for your routable component, bypassing the prompt
 $ yo vulgar:ng-route --name anteater
+
+# it works similarly for
+$ yo vulgar:ng-component --name rhino
+$ yo vulgar:ng-directive --name ostrich
 ```
 
 ```bash
@@ -79,15 +89,25 @@ $ yo vulgar:ng-route --path anteaters
 # set the module for your routable component, bypassing the prompt
 # note that this directory should already exist in `src/`
 $ yo vulgar:ng-route --module app
+
+# . . .
+$ yo vulgar:ng-component --module app
+$ yo vulgar:ng-directive --module app
 ```
 
 ```bash
 # set the destination for your routable component, bypassing the prompt
 # this is from the `root` of your application
 $ yo vulgar:ng-route --dest src/app/todo
+
+# . . .
+$ yo vulgar:ng-component --dest src/app/todo
+$ yo vulgar:ng-directive --dest src/app/todo
 ```
 
-Visiting `http://localhost:8080/hedgehog` will show the `hedgehog` list.
+## Acknowledgements
+
+> [Angular](<https://github.com/Angular> for all of their magic as well as a great scaffolding starting point based on the output of the `angular-cli` tool
 
 # Support, Questions, or Feedback
 
