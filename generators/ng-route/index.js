@@ -100,7 +100,7 @@ module.exports = yeoman.Base.extend({
         this.destination = this.options.dest;
       } else {
 
-        this.destination = modulesSource + this.moduleName + '/' + this.decapitalizedName + '/';
+        this.destination = modulesSource + this.moduleName + '/' + this.slugifiedName + '/';
       }
 
       done();
