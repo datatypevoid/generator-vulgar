@@ -7,7 +7,7 @@
 
 # generator-vulgar [![Join Slack](https://img.shields.io/badge/slack-join-brightgreen.svg)](http://www.davidniciforovic.com/wp-login.php?action=slack-invitation)
 
-## _This project is being actively developed for use alongside  [vulgar-cli](https://github.com/datatypevoid/vulgar-cli), a tool for generating and managing cutting-edge MEAN stack applications_
+## _This project is being actively developed for use under the hood of  [vulgar-cli](https://github.com/datatypevoid/vulgar-cli), a tool for generating and managing cutting-edge MEAN stack applications_
 
 ### Generating a Routable Component on the Front-end
 
