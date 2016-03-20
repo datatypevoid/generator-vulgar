@@ -9,6 +9,21 @@
 
 ## _This project is being actively developed for use under the hood of  [vulgar-cli](https://github.com/datatypevoid/vulgar-cli), a tool for generating and managing cutting-edge MEAN stack applications_
 
+### Angular 2 Scaffolds for the Front-End
+
+You can use `yo vulgar` to generate various Angular 2 components:
+
+```bash
+# generate a new Angular 2 component
+$ yo vulgar:ng-component
+```
+
+You can find all possible scaffolds in the table below:
+
+Scaffold  | Usage
+--------- | ------------------------
+Component | `yo vulgar:ng-component`
+
 ### Generating a Routable Component on the Front-end
 
 You can generate a new route by with the following command (note the singular used in `hedgehog`):
