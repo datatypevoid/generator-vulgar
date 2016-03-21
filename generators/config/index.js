@@ -19,12 +19,6 @@ module.exports = yeoman.Base.extend({
 
   writing: function () {
 
-    // For dummy test
-    this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
-    );
-
    // Optional flag with a desination modifier for use with
    this.destination = this.options.dest;
 

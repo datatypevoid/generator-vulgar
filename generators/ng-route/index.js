@@ -130,12 +130,6 @@ module.exports = yeoman.Base.extend({
 
   writing: function () {
 
-    // For dummy test
-    this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
-    );
-
     //** Generate `root` component
     this.fs.copyTpl(
       this.templatePath('components/_-root.component.ts'),

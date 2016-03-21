@@ -130,12 +130,6 @@ module.exports = yeoman.generators.Base.extend({
 
   writing: function () {
 
-    // For dummy test
-    this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath(modulesSource + '/' +'dummyfile.txt')
-    );
-
     //** Generate `Angular` service
     this.fs.copyTpl(
       this.templatePath('_.service.ts'),
