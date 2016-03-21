@@ -6,9 +6,7 @@ var yeoman = require('yeoman-generator'),
          s = require('underscore.string'),
         fs = require('fs'),
     prompt = require('../../lib/option-or-prompt.js');
-
-// TODO: Refactor to remove prompt logic since the cli handles it
-//       now that generation code has been merged with the cli
+    
 module.exports = yeoman.Base.extend({
 
   _prompt: prompt,
