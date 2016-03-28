@@ -18,6 +18,11 @@ You can use `$ yo vulgar` to generate various back-end components:
 $ yo vulgar:model
 ```
 
+```bash
+# generate a new Express route
+$ yo vulgar:route
+```
+
 Afterwards to use the new model and route together, open `app/routes.js`, import your new route and add it to the `RESTful API` section:
 
 ```
@@ -31,11 +36,6 @@ import newRoutes from './routes/_new.router.js';
   // Pass in our Express app and Router
   newRoutes(app, router);
 
-```
-
-```bash
-# generate a new Express route
-$ yo vulgar:route
 ```
 
 You can find all possible scaffolds in the table below:
