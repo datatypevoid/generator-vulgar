@@ -9,6 +9,42 @@
 
 ## _This project is currently in `alpha` and is being developed for use under the hood of [vulgar-cli](https://github.com/datatypevoid/vulgar-cli), a tool for generating and managing cutting-edge MEAN stack applications_
 
+### Scaffolds for the Back-End
+
+You can use `$ yo vulgar` to generate various back-end components:
+
+```bash
+# generate a new Mongoose model
+$ yo vulgar:model
+```
+
+Afterwards to use the new model and route together, open `app/routes.js`, import your new route and add it to the `RESTful API` section:
+
+```
+// Load our API routes for the `new` component
+import newRoutes from './routes/_new.router.js';
+
+// . . .
+
+// #### RESTful API Routes
+
+  // Pass in our Express app and Router
+  newRoutes(app, router);
+
+```
+
+```bash
+# generate a new Express route
+$ yo vulgar:route
+```
+
+You can find all possible scaffolds in the table below:
+
+Scaffold  | Usage
+--------- | --------------------------
+Model     | `$ yo vulgar:model`
+Route     | `$ yo vulgar:route`
+
 ### Angular 2 Scaffolds for the Front-End
 
 You can use `$ yo vulgar` to generate various Angular 2 components:
