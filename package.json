@@ -6,6 +6,7 @@
     "test": "mocha"
   },
   "dependencies": {
+    "lodash": "*",
     "chalk": "^1.0.0",
     "underscore": "^1.8.3",
     "yeoman-generator": "^0.21.1",
