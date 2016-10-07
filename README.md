@@ -157,7 +157,7 @@ $ yo vulgar:ng-service --dest src/app/shared
 
 ## Acknowledgements
 
-> [Angular](<https://github.com/Angular> for all of their magic as well as a great scaffolding starting point based on the output of the `angular-cli` tool
+> [Angular](https://github.com/Angular) for all of their magic as well as a great scaffolding starting point based on the output of the `angular-cli` tool
 
 # Support, Questions, or Feedback
 
